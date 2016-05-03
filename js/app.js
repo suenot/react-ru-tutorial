@@ -16,18 +16,23 @@ var my_news = [
 var News = React.createClass({
 	render: function() {
 		var data = this.props.data;
-		var newsTemplate = data.map(function(item, index) {
-			return (
-				<div key={index}>
-					<p className="news__author">{item.author}:</p>
-					<p className="news__text">{item.text}</p>
-				</div>
-			)
-		})
-console.log(newsTemplate);
+		var newsTemplate;
+		if (data.length > 0) {
+			var newsTemplate = data.map(function(item, index) {
+				return (
+					<div key={index}>
+						<p className="news__author">{item.author}:</p>
+						<p className="news__text">{item.text}</p>
+					</div>
+				)
+			})
+		} else {
+			newsTemplate = <strong>К сожалению новостей нет</strong>
+		}
 		return (
 			<div className="news">
 				{newsTemplate}
+				<strong className={data.length > 0 ? '':'none'}>Всего новостей: {data.length}</strong>
 			</div>
 		);
 	}
