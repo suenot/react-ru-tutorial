@@ -101,11 +101,35 @@ var Comments = React.createClass({
 	}
 });
 
+var TestInput = React.createClass({
+	// getInitialState: function() {
+	// 	return {
+	// 		myValue: ''
+	// 	}
+	// },
+	// onChangeHandler: function(e) {
+	// 	this.setState({myValue: e.target.value})
+	// },
+	onBtnClickHandler: function(e) {
+		console.log(this.refs);
+		alert(ReactDOM.findDOMNode(this.refs.myTestInput).value);
+	},
+	render: function() {
+		return (
+			<div>
+				<input className='test-input' ref='myTestInput' defaultValue='' placeholder='введите значение' />
+				<button onClick={this.onBtnClickHandler} ref='alert_button'>Показать alert</button>
+			</div>
+		);
+	}
+});
+
 var App = React.createClass({
 	render: function() {
 		return (
 			<div className="app">
 				<h3>Новости</h3>
+				<TestInput />
 				<News data={my_news} />
 			</div>
 		);
