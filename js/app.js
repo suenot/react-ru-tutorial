@@ -102,14 +102,9 @@ var Comments = React.createClass({
 });
 
 var TestInput = React.createClass({
-	// getInitialState: function() {
-	// 	return {
-	// 		myValue: ''
-	// 	}
-	// },
-	// onChangeHandler: function(e) {
-	// 	this.setState({myValue: e.target.value})
-	// },
+	componentDidMount: function() {
+		ReactDOM.findDOMNode(this.refs.myTestInput).focus();
+	},
 	onBtnClickHandler: function(e) {
 		console.log(this.refs);
 		alert(ReactDOM.findDOMNode(this.refs.myTestInput).value);
